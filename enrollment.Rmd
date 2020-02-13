@@ -20,5 +20,6 @@ read_excel("class_enrollment_summary_by_term_2.13.20.xlsx", skip = 3) %>%
   arrange(desc(total)) %>%
   slice(1:5) %>%
   select(course_title,course_name,instructor_full_name,total) %>%
-  gt()
+  gt() %>%
+  tab_header(title = "Top Five Government Classes")
 ```
