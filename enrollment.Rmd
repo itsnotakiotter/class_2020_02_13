@@ -1,16 +1,16 @@
 ---
-title: "enrollment"
+title: "Class"
 author: "Yanghe"
 date: "2/13/2020"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
+knitr::opts_chunk$set(echo = F)
 library(readxl)
 library(janitor)
 library(tidyverse)
+library(gt)
 ```
 
 ```{r chunk1}
@@ -18,5 +18,7 @@ read_excel("class_enrollment_summary_by_term_2.13.20.xlsx", skip = 3) %>%
   clean_names() %>%
   filter(course_department == "Government") %>%
   arrange(desc(total)) %>%
-  slice(1:5)
+  slice(1:5) %>%
+  select(course_title,course_name,instructor_full_name,total) %>%
+  gt()
 ```
